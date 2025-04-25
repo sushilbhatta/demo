@@ -32,7 +32,18 @@
 .main-nav--style ul li a {
   color: var(--clr-neutral-black) !important;
 }
+.main-header ul li a:hover,
+.main-header ul li a:hover {
+  color: hsla(216, 100%, 50%, 1);
+}
 
+.main-nav--style ul li a:hover,
+.main-nav--style ul li a:hover {
+  color: hsla(216, 100%, 50%, 1);
+}
+.main-header ul li.current-menu-item a {
+  color: hsla(216, 100%, 50%, 1) !important;
+}
 .main-header .menu {
   display: flex;
   align-items: center;
@@ -52,7 +63,7 @@
   color: var(--clr-neutral-white);
 }
 
-.main-header.sticking ul li a {
+.sticking ul li a {
   color: var(--clr-neutral-black);
 }
 .top-menu:first-of-type > li:last-child {
@@ -61,6 +72,10 @@
   background-color: var(--clr-primary-800);
   padding: 10px 24px;
   height: 2.5rem;
+}
+.top-menu:first-of-type > li:last-child:hover {
+  border: 1px solid var(--clr-primary-800);
+  background-color: var(--clr-neutral-gray-200);
 }
 
 .top-menu .sub-menu {
@@ -166,7 +181,7 @@
   z-index: 100;
   top: 0;
   left: 0;
-  background: var(--clr-neutral-gray-800);
+  background: var(--clr-neutral-gray-200);
   width: 80%;
   height: 100vh;
   transform: translateX(-100%);
@@ -184,6 +199,9 @@
 
 .open {
   display: block;
+}
+.mobile-nav ul li a {
+  color: rgb(12, 12, 12);
 }
 
 .mobile-nav__container.open {
@@ -209,8 +227,16 @@
 .mobile-menu .sub-menu li {
   width: 100%;
 }
+.mobile-nav ul li a:hover,
+.mobile-nav ul li a:active {
+  color: hsla(216, 100%, 50%, 1);
+}
+.main-nav--style ul li a:hover,
+.main-nav--style ul li a:active {
+  color: hsla(216, 100%, 50%, 1);
+}
 .mobile-menu .sub-menu li a {
-  color: rgb(230, 221, 221);
+  color: rgb(12, 12, 12);
   font-weight: var(--fw-medium);
   font-size: var(--fs-nav);
   line-height: 1.5rem;
@@ -251,6 +277,17 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+.dropdown-toggle.mobile:after {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.8333 5.66602L8.16667 10.3327L3.5 5.66602' stroke='%23151212' stroke-linecap='square'/%3E%3C/svg%3E%0A");
+  position: relative;
+  top: 4px;
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 @media (min-width: 1024px) {
   .main-header {
@@ -267,7 +304,6 @@
 
 /* footer */
 
-/* !!Footer */
 .footer {
   display: flex;
   justify-content: start;

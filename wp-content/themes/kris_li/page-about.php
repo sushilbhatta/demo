@@ -8,6 +8,5 @@
     <?php get_template_part('/includes/aboutus/aboutus-need'); ?>
     <?php get_template_part('/includes/aboutus/aboutus-team'); ?>
 
-    <!--   About us  feature -->
 </main>
 <?php get_footer(); ?>

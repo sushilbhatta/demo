@@ -28,8 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to handle submenu toggles
   function setupSubMenuToggles() {
     const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
-    console.log(dropdownToggles);
-
+    // Add .mobile class if screen is under 727px
+    if (window.innerWidth < 1024) {
+      dropdownToggles.forEach(function (toggle) {
+        toggle.classList.add("mobile");
+      });
+    }
     dropdownToggles.forEach(function (toggle) {
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
@@ -140,9 +144,15 @@ const navObserver = new IntersectionObserver(
   { threshold: 1, rootMargin: "100px 0px 0px 0px" }
 );
 
-navObserver.observe(scrollWatcher);
+// Observer logic
+const toggleButtonObserver = new IntersectionObserver(
+  (entries) => {
+    primaryHeader.classList.toggle("dark-nav", !entries[0].isIntersecting);
+  },
+  { threshold: 1, rootMargin: "100px 0px 0px 0px" }
+);
 
-// scroller
+// scroller Section
 const scrollers = document.querySelectorAll(".scroller");
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   addAnimation();
