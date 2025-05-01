@@ -7,18 +7,14 @@ $team_paragraph = get_post_meta($post->ID, '_team_paragraph', true);
         <h4><?php echo $team_heading ?></h4>
         <p><?php echo $team_paragraph ?></p>
     </header>
-
-
     <ul class="team-members">
         <?php
         $team_icon     = get_post_meta(get_the_ID(), '_team_icon', true) ?: [];
         $team_title   = get_post_meta(get_the_ID(), '_team_title', true) ?: [];
         $team_description = get_post_meta(get_the_ID(), '_team_description', true) ?: [];
-
         for ($i = 0; $i < 2; $i++) {
         ?>
             <li class="team-member">
-                <!-- icon -->
                 <?php if (!empty($team_icon[$i])) : ?>
                     <div class="member_image">
                         <img src=" <?php echo esc_url($team_icon[$i]); ?> " alt=" <?php esc_attr__($team_title[$i]); ?>" />

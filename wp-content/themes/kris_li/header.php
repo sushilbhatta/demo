@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kris & Li Cleaning Services</title>
 
-    <!--  google fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,14 +15,29 @@
 </head>
 
 <body>
-    <!-- backdrop -->
+    <!-- Backdrop -->
     <div class="backdrop"></div>
-    <!-- desktop nav -->
+
+    <!-- Desktop Nav -->
     <header class="main-header">
-        <a href="#" class="main-header__brand">
-            <?php $logoimg = get_header_image();  ?>
-            <img src="<?php echo $logoimg ?>" alt="this is logo">
+        <!-- Light header (small) -->
+        <a href="#" class="main-header__brand light sm">
+            <?php $light_header_image = get_light_header_image(); ?>
+            <img src="<?php echo esc_url($light_header_image); ?>" alt="Site Header">
         </a>
+
+        <!-- Light header (large) -->
+        <a href="#" class="main-header__brand light lg">
+            <?php $light_header_image_lg = get_light_header_image_xl(); ?>
+            <img src="<?php echo esc_url($light_header_image_lg); ?>" alt="Site Header">
+        </a>
+
+        <!-- Dark header -->
+        <a href="#" class="main-header__brand dark">
+            <?php $dark_header_image = get_dark_header_image(); ?>
+            <img src="<?php echo esc_url($dark_header_image); ?>" alt="Site Header">
+        </a>
+
         <?php
         wp_nav_menu([
             'theme_location' => 'top-menu',
@@ -30,13 +45,26 @@
             'container' => '',
         ]);
         ?>
-
     </header>
-    <!-- mobile nav -->
+
+    <!-- Mobile Nav -->
     <header class="mobile-nav">
-        <a href="#" class="mobile-nav__logo">
-            <?php $logoimg = get_header_image(); ?>
-            <img src="<?php echo $logoimg ?>" alt="this is logo">
+        <!-- Small device logo -->
+        <a href="#" class="main-header__brand light sm">
+            <?php $light_header_image = get_light_header_image(); ?>
+            <img src="<?php echo esc_url($light_header_image); ?>" alt="Site Header">
+        </a>
+
+        <!-- Large device logo -->
+        <a href="#" class="main-header__brand light lg">
+            <?php $light_header_image_lg = get_light_header_image_xl(); ?>
+            <img src="<?php echo esc_url($light_header_image_lg); ?>" alt="Site Header">
+        </a>
+
+        <!-- Dark header -->
+        <a href="#" class="main-header__brand dark">
+            <?php $dark_header_image = get_dark_header_image(); ?>
+            <img src="<?php echo esc_url($dark_header_image); ?>" alt="Site Header">
         </a>
 
         <button class="toggle-button"></button>
@@ -51,3 +79,8 @@
             ?>
         </nav>
     </header>
+
+    <?php wp_body_open(); ?>
+</body>
+
+</html>

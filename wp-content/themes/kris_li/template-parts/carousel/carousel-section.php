@@ -9,18 +9,15 @@ $paragraph = get_post_meta(get_the_ID(), '_brand_carousel_main_paragraph', true)
         <h3 class="heading--special"><?php echo $paragraph ?></h3>
     </header>
 
-    <ul class="scroller" data-direction="right" data-speed="slow">
+    <ul class="scroller" data-direction="right" data-speed="fast">
 
         <div class="scroller__inner">
             <?php
             $offer_icon_url = get_post_meta(get_the_ID(), '_carousel_icon', true) ?: [];
             for ($i = 0; $i < 6; $i++) {
             ?>
-                <!-- icon -->
                 <?php if (!empty($offer_icon_url[$i])) : ?>
-
                     <img src=" <?php echo esc_url($offer_icon_url[$i]); ?> " alt="title" />
-
                 <?php endif; ?>
             <?php
             }

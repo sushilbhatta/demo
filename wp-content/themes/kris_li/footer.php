@@ -33,8 +33,8 @@
             <!-- Footer Header -->
             <div class="footer_header">
                 <a href="#" class="footer_header-logo">
-                    <?php $logoimg = get_header_image(); ?>
-                    <img src="<?php echo $logoimg; ?>" alt="">
+                    <?php $light_header_image = get_light_header_image_xl(); ?>
+                    <img src="<?php echo esc_url($light_header_image); ?>" alt="Site Header">
                 </a>
                 <p class="footer_header-description">Specialised cleaning solutions for healthcare facilities and other commercial premises.</p>
             </div>
@@ -77,7 +77,7 @@
         <section class="footer-end">
 
             <!-- privacy and terms -->
-            <div footer-end_links>
+            <div class="footer-end_links">
                 <?php
                 wp_nav_menu([
                     'theme_location' => 'footer-menu-end-link'

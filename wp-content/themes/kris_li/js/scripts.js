@@ -1,4 +1,4 @@
-// Navbar toggle and dropdown
+// Navbar toggle
 
 const backdrop = document.querySelector(".backdrop");
 const toggleButton = document.querySelector(".toggle-button");
@@ -20,15 +20,12 @@ if (toggleButton) {
     mobileNav.classList.toggle("open");
   });
 }
-
 // dropdown toggle
 document.addEventListener("DOMContentLoaded", function () {
   setupSubMenuToggles();
 
-  // Function to handle submenu toggles
   function setupSubMenuToggles() {
     const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
-    // Add .mobile class if screen is under 727px
     if (window.innerWidth < 1024) {
       dropdownToggles.forEach(function (toggle) {
         toggle.classList.add("mobile");
@@ -37,18 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownToggles.forEach(function (toggle) {
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
-
-        // Find the parent list item
         const parent = this.parentNode;
 
-        // Find the submenu (next element after the toggle button)
         const subMenu = parent.querySelector(".sub-menu");
 
         if (subMenu) {
-          // Toggle submenu visibility
           subMenu.classList.toggle("is-active");
-
-          // Toggle aria-expanded
           const isExpanded = this.getAttribute("aria-expanded") === "true";
           this.setAttribute("aria-expanded", !isExpanded);
         }
@@ -88,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
+// DROPDOWN ICON  HANDLING
 const DROPDOWN_ICONS = [
   `${myTheme.themeUrl}/images/dropdown_icon/medical_cleaning.svg`,
   `${myTheme.themeUrl}/images/dropdown_icon/office_cleaning.svg`,
@@ -127,32 +118,55 @@ subMenuMobileItems.forEach((item, index) => {
   }
 });
 
-// Navbar  Observer
-const primaryHeader = document.querySelector(".main-header");
-const heroSection = document.querySelector("#carousel");
+// handle the scrolling navigation bar
+window.onscroll = function () {
+  myFunction();
+};
 
-// Create the scroll watcher
-const scrollWatcher = document.createElement("div");
-scrollWatcher.setAttribute("data-scroll-watcher", "");
-heroSection.before(scrollWatcher);
+function myFunction() {
+  const mainNavHeader = document.querySelector(".main-header");
+  const mobileNavHeader = document.querySelector(".mobile-nav");
+  const dropdownToggleIconBtn = document.querySelector(".dropdown-toggle");
+  if (
+    document.body.scrollTop > 250 ||
+    document.documentElement.scrollTop > 150
+  ) {
+    mainNavHeader.classList.add("sticking");
+    mobileNavHeader.classList.add("sticking");
+    dropdownToggleIconBtn.classList.add("darkbtn");
+  } else {
+    mainNavHeader.classList.remove("sticking");
+    dropdownToggleIconBtn.classList.remove("darkbtn");
+    mobileNavHeader.classList.remove("sticking");
+  }
+}
 
-// Observer logic
-const navObserver = new IntersectionObserver(
-  (entries) => {
-    primaryHeader.classList.toggle("sticking", !entries[0].isIntersecting);
-  },
-  { threshold: 1, rootMargin: "100px 0px 0px 0px" }
-);
+// Dynamic logo presentation
+document.addEventListener("DOMContentLoaded", function () {
+  const mainHeader = document.querySelector(".main-header");
+  const mobileNav = document.querySelector(".mobile-nav");
 
-// Observer logic
-const toggleButtonObserver = new IntersectionObserver(
-  (entries) => {
-    primaryHeader.classList.toggle("dark-nav", !entries[0].isIntersecting);
-  },
-  { threshold: 1, rootMargin: "100px 0px 0px 0px" }
-);
+  function handleScroll() {
+    const scrollPosition = window.scrollY;
+    const threshold = 50;
 
-// scroller Section
+    if (scrollPosition > threshold) {
+      mainHeader.classList.add("sticking");
+      mobileNav.classList.add("sticking");
+    } else {
+      mainHeader.classList.remove("sticking");
+      mobileNav.classList.remove("sticking");
+    }
+  }
+
+  // Run on scroll
+  window.addEventListener("scroll", handleScroll);
+
+  // Run on page load
+  handleScroll();
+});
+
+//logos carousel scroller Section
 const scrollers = document.querySelectorAll(".scroller");
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   addAnimation();
@@ -172,4 +186,242 @@ function addAnimation() {
       scrollerInner.appendChild(duplicatedItem);
     });
   });
+}
+
+// FAQ PAGE
+const faqQuestion = document.querySelectorAll(".list-item_content--heading");
+
+faqQuestion.forEach((question) => {
+  question.addEventListener("click", () => {
+    const answer = question.parentElement.nextElementSibling;
+    answer.classList.toggle("faq-show");
+    question.classList.toggle("rotate");
+  });
+});
+
+// Contact Us Form
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Clear previous errors
+    document
+      .querySelectorAll(".form-group, .checkbox-container, .captcha-container")
+      .forEach((el) => el.classList.remove("error"));
+    document
+      .querySelectorAll(".error-message")
+      .forEach((el) => (el.textContent = ""));
+    const messages = document.getElementById("form-messages");
+    messages.classList.remove("success", "error");
+    messages.textContent = "";
+
+    // Frontend validation
+    const errors = {};
+    const firstName = document.getElementById("first-name").value.trim();
+    const lastName = document.getElementById("last-name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const contactNumber = document
+      .getElementById("contact-number")
+      .value.trim();
+    const enquiryType = document.getElementById("enquiry-type").value.trim();
+    const enquiry = document.getElementById("enquiry").value.trim();
+    const terms = document.getElementById("terms").checked;
+    const captcha = document.getElementById("captcha").checked;
+
+    if (!firstName) {
+      errors["first-name"] = "First name is required";
+    } else if (firstName.length > 50) {
+      errors["first-name"] = "First name must be less than 50 characters";
+    }
+
+    if (!lastName) {
+      errors["last-name"] = "Last name is required";
+    } else if (lastName.length > 50) {
+      errors["last-name"] = "Last name must be less than 50 characters";
+    }
+
+    if (!email) {
+      errors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = "Invalid email format";
+    }
+
+    if (!contactNumber) {
+      errors["contact-number"] = "Contact number is required";
+    } else if (!/^[\d\s+()-]{7,20}$/.test(contactNumber)) {
+      errors["contact-number"] = "Invalid phone number format";
+    }
+
+    if (!enquiryType) {
+      errors["enquiry-type"] = "Enquiry type is required";
+    } else if (enquiryType.length > 100) {
+      errors["enquiry-type"] = "Enquiry type must be less than 100 characters";
+    }
+
+    if (!enquiry) {
+      errors.enquiry = "Enquiry is required";
+    } else if (enquiry.length > 1000) {
+      errors.enquiry = "Enquiry must be less than 1000 characters";
+    }
+
+    if (!terms) {
+      errors.terms = "You must agree to the Terms of Use and Privacy Policy";
+    }
+
+    if (!captcha) {
+      errors.captcha = "Please verify you are not a robot";
+    }
+
+    // Display frontend validation errors
+    if (Object.keys(errors).length > 0) {
+      for (const field in errors) {
+        if (field === "terms") {
+          const container = document
+            .getElementById("terms")
+            .closest(".checkbox-container");
+          container.classList.add("error");
+          container.querySelector(".error-message").textContent = errors[field];
+        } else if (field === "captcha") {
+          const container = document
+            .getElementById("captcha")
+            .closest(".captcha-container");
+          container.classList.add("error");
+          container.querySelector(".error-message").textContent = errors[field];
+        } else {
+          const container = document
+            .getElementById(field)
+            .closest(".form-group");
+          container.classList.add("error");
+          container.querySelector(".error-message").textContent = errors[field];
+        }
+      }
+      showToast("Please correct the errors in the form.", "error");
+      return;
+    }
+
+    // Submit form via AJAX
+    const formData = new FormData(form);
+    fetch(contactFormAjax.ajaxurl, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          showToast(
+            data.message || "Your enquiry has been submitted successfully!",
+            "success"
+          );
+          form.reset();
+        } else {
+          if (data.errors) {
+            for (const field in data.errors) {
+              if (field === "general") {
+                showToast(data.errors[field], "error");
+              } else if (field === "terms") {
+                const container = document
+                  .getElementById("terms")
+                  .closest(".checkbox-container");
+                container.classList.add("error");
+                container.querySelector(".error-message").textContent =
+                  data.errors[field];
+              } else if (field === "captcha") {
+                const container = document
+                  .getElementById("captcha")
+                  .closest(".captcha-container");
+                container.classList.add("error");
+                container.querySelector(".error-message").textContent =
+                  data.errors[field];
+              } else {
+                const container = document
+                  .getElementById(field)
+                  .closest(".form-group");
+                container.classList.add("error");
+                container.querySelector(".error-message").textContent =
+                  data.errors[field];
+              }
+            }
+            if (!data.errors.general) {
+              showToast("Please correct the errors in the form.", "error");
+            }
+          } else {
+            showToast("An error occurred. Please try again.", "error");
+          }
+        }
+      })
+      .catch(() => {
+        showToast("An error occurred. Please try again.", "error");
+      });
+  });
+});
+
+// Contact Message in toast
+const timeout = 5000;
+
+function showToast(message, type = "success") {
+  const toastContainer = document.querySelector(".toast-container");
+
+  const toast = document.createElement("div");
+  toast.classList.add("toast", type);
+
+  toast.innerHTML = `
+      <div class="toast-content">
+          <i class="bi icon bi-${getIcon(type)}"></i>
+          <div class="message">
+              <span class="text text-1">${capitalize(type)}</span>
+              <span class="text text-2">${message}</span>
+          </div>
+      </div>
+      <i class="bi bi-x-lg close"></i>
+      <div class="progress active"></div>
+  `;
+
+  toastContainer.appendChild(toast);
+  let showToast = setTimeout(() => {
+    void toast.offsetHeight;
+    toast.classList.add("active");
+  }, 1);
+
+  const progress = toast.querySelector(".progress");
+  const closeIcon = toast.querySelector(".close");
+
+  // Auto-remove toast after 5s
+  const timer1 = setTimeout(() => {
+    toast.classList.remove("active");
+  }, timeout);
+
+  const timer2 = setTimeout(() => {
+    progress.classList.remove("active");
+    setTimeout(() => toast.remove(), 400);
+  }, timeout + 300);
+
+  // Manual close
+  closeIcon.addEventListener("click", () => {
+    toast.classList.remove("active");
+    clearTimeout(timer1);
+    clearTimeout(timer2);
+    clearTimeout(showToast);
+    setTimeout(() => toast.remove(), 400);
+  });
+}
+
+function getIcon(type) {
+  switch (type) {
+    case "success":
+      return "check-circle-fill";
+    case "error":
+      return "x-circle-fill";
+    case "warning":
+      return "exclamation-triangle-fill";
+    case "info":
+      return "info-circle-fill";
+    default:
+      return "check-circle-fill";
+  }
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }

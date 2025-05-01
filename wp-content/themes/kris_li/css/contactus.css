@@ -1,0 +1,359 @@
+.contactus-main {
+  margin-top: 92px;
+}
+.contactus_bg-map {
+  width: 100%;
+}
+
+.contactus_bg-map img {
+  width: 100%;
+}
+
+.contactus-main ~ footer .get-in-touch {
+  display: none;
+}
+
+.contact-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 60px;
+  min-height: 100vh;
+  padding: 90px 0;
+  margin: 0 72px;
+}
+
+.contact-form-section {
+  flex: 1;
+  max-width: 560px;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form-section h1 {
+  font-family: Epilogue;
+  font-weight: 600;
+  font-size: var(--fs-primary-heading);
+  line-height: 64px;
+  letter-spacing: -2%;
+  margin-bottom: 24px;
+}
+
+.contact-form-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
+  line-height: 23px;
+  color: hsla(0, 0%, 20%, 1);
+}
+
+.contact-form-section input[type="text"],
+.contact-form-section input[type="email"],
+.contact-form-section textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid hsla(0, 0%, 62%, 1);
+  border-radius: 4px;
+  background-color: transparent;
+  color: hsla(0, 0%, 62%, 1);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+  line-height: 28px;
+  letter-spacing: 0px;
+}
+
+.contact-form-section input[type="text"]:focus-visible,
+.contact-form-section input[type="email"]:focus-visible,
+.contact-form-section textarea:focus-visible {
+  outline: unset;
+  border: 2px solid hsla(0, 0%, 62%, 1);
+}
+
+.contact-form-section textarea {
+  height: 223px;
+  resize: none;
+}
+
+.form-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: fit-content;
+}
+.form-footer__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.checkbox-container,
+.captcha-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-container .form-group__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.checkbox-container label,
+.captcha-container label {
+  margin: 0;
+  font-family: Epilogue;
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: hsla(0, 6%, 8%, 1);
+}
+
+.captcha-container .form-group__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  max-width: 66%;
+  border-radius: 2px;
+
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  background-color: hsla(0, 0%, 95%, 0.4);
+  padding: 8px;
+}
+input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.captcha-checkbox_container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+}
+.captcha-branding {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.form-group .error-message,
+.checkbox-container .error-message,
+.captcha-container .error-message {
+  color: red;
+  font-size: 0.8em;
+  display: none;
+  margin-top: 0.5rem;
+}
+
+.form-group.error .error-message,
+.checkbox-container.error .error-message,
+.captcha-container.error .error-message {
+  display: inline-block;
+  width: 100%;
+}
+
+.form-messages {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.form-messages.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.form-messages.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.submit-button {
+  font-family: Epilogue;
+  font-weight: 500;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  background-color: hsla(216, 100%, 50%, 1);
+  color: white;
+  padding: 18px 48px;
+  width: max-content;
+  border: none;
+  border-radius: 36px;
+  margin-top: 8px;
+}
+
+.submit-button:hover {
+  background-color: #1c86ee;
+}
+
+.contact-image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-image-section img {
+  width: 100%;
+  max-width: 500px;
+  height: 678px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .contact-page-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-form-section,
+  .contact-image-section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact-image-section {
+    margin-top: 20px;
+  }
+}
+/* Toast Container */
+.toast-container {
+  position: fixed;
+  top: 25px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.toast {
+  position: relative;
+  width: 320px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 20px 35px 20px 25px;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  overflow-x: hidden;
+  align-items: center;
+  transform: translateX(calc(100% + 30px));
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.toast.active {
+  transform: translateX(0%);
+}
+
+.toast .toast-content {
+  display: flex;
+  align-items: center;
+}
+
+.toast-content .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  min-width: 35px;
+  font-size: 35px;
+  color: #fff;
+}
+
+.toast-content .message {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.message .text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+  font-family: "Outfit", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.message .text.text-1 {
+  font-weight: 600;
+  color: #333;
+}
+
+.toast .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.toast .close:hover {
+  opacity: 1;
+}
+
+.toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+}
+
+.toast .progress:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #4070f4;
+}
+
+.progress.active:before {
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}
+
+/* Toast Type Colors */
+.toast.success .icon {
+  color: rgb(25 135 84);
+}
+.toast.error .icon {
+  color: rgb(220 53 69);
+}
+.toast.warning .icon {
+  color: rgb(255 193 7);
+}
+.toast.info .icon {
+  color: rgb(13 202 240);
+}
+
+.toast.success .progress:before {
+  background: rgb(25 135 84);
+}
+.toast.error .progress:before {
+  background: rgb(220 53 69);
+}
+.toast.warning .progress:before {
+  background: rgb(255 193 7);
+}
+.toast.info .progress:before {
+  background: rgb(13 202 240);
+}

@@ -35,10 +35,10 @@
                     </a>
                 <?php endif; ?>
             </div>
-            <!-- <?php echo esc_attr($image_container_color[$i] ?? 'blue'); ?> -->
-            <div class="feature_image">
+
+            <div class="feature_image  <?php echo esc_attr($image_container_color[$i] ?? 'blue'); ?>">
                 <?php if (!empty($images[$i])): ?>
-                    <img class=" fe" src="<?php echo esc_url($images[$i]); ?>" alt="Feature_images">
+                    <img src="<?php echo esc_url($images[$i]); ?>" alt="Feature_images">
                 <?php endif; ?>
             </div>
         </article>

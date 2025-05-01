@@ -18,7 +18,6 @@ $achievment = [
     ],
 ];
 ?>
-<!-- achievment section -->
 <section class="achievement">
     <?php foreach ($achievment as $items): ?>
         <div>

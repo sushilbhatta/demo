@@ -6,11 +6,8 @@ $contact_image            = get_post_meta(get_the_ID(), '_contact_images', true)
 $contact_button           = get_post_meta(get_the_ID(), '_contact_buttons', true) ?: '';
 $contact_button_link      = get_post_meta(get_the_ID(), '_contact_button_links', true) ?: '';
 $contact_image_orintation = get_post_meta(get_the_ID(), '_contact_img_orintation', true) ?: '';
-
-// var_dump($contact_button);
-// die()
-
 ?>
+
 <article class="feature layout-<?php echo esc_attr($contact_image_orintation ?? 'top'); ?> ">
     <div class="feature_content">
         <?php if (!empty($contact_label)): ?>

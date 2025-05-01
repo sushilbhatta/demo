@@ -6,12 +6,9 @@
         foreach ($hero_blocks as $block) {
             echo apply_filters('the_content', render_block($block));
         }
-
-
-
-        get_template_part('template-parts/testimonial/testimonial-head-section');
-
-        get_template_part('template-parts/testimonial/testimonial-items-section');
     }
+    get_template_part('template-parts/testimonial/testimonial-head-section');
+
+    get_template_part('template-parts/testimonial/testimonial-items-section');
     ?>
 </section>

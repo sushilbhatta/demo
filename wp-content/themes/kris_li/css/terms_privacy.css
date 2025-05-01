@@ -1,0 +1,51 @@
+.terms_heading {
+  background-color: hsla(216, 100%, 98%, 1);
+  padding: 82px auto;
+  padding-top: calc(82px + 92px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 82px;
+}
+
+.terms_content_container {
+  margin: 0 72px;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+.terms_content_container > div {
+  max-width: 700px;
+}
+.terms-content {
+  gap: 32px;
+}
+.terms_content_items {
+  gap: 32px;
+}
+.terms-content > p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: hsla(0, 6%, 8%, 1);
+}
+
+.terms_item h2 {
+  font-family: Epilogue;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0%;
+}
+.terms_item p {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 16px !important;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+#terms-and-condition ~ footer .get-in-touch {
+  display: none;
+}

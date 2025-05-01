@@ -10,11 +10,12 @@
     ?>
         <li class="offer-item">
 
-            <!-- icon -->
             <?php if (!empty($offer_icon_url[$i])) : ?>
                 <div class="offer-item_icon">
-                    <img src=" <?php echo esc_url($offer_icon_url[$i]); ?> " alt=" <?php esc_attr__($offer_title[$i]); ?>" />
-                </div>
+                    <?php
+                    $svg_content = file_get_contents($offer_icon_url[$i]);
+                    echo $svg_content;
+                    ?> </div>
             <?php endif; ?>
             <div class="offer-item__content">
                 <?php if (!empty($offer_title[$i])) : ?>
@@ -35,7 +36,6 @@
             <?php if (!empty($offer_btn[$i]) && !empty($offer_btn_link[$i])): ?>
                 <a class="content_btn" href="<?php echo esc_url($offer_btn_link[$i]); ?>" class="button">
                     <span content_btn--text>
-
                         <?php echo esc_html($offer_btn[$i]); ?>
                     </span>
                     <span class="content_btn--icon"></span>

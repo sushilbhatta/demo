@@ -1,17 +1,13 @@
 <section class="aboutus-need">
-
     <?php
+    $headings        = get_post_meta(get_the_ID(), '_service_pricing_headings', true) ?: [];
+    $paragraphs      = get_post_meta(get_the_ID(), '_service_pricing_paragraphs', true) ?: [];
+    $images          = get_post_meta(get_the_ID(), '_service_pricing_images', true) ?: [];
+    $buttons         = get_post_meta(get_the_ID(), '_service_pricing_buttons', true) ?: [];
+    $button_links    = get_post_meta(get_the_ID(), '_service_pricing_button_links', true) ?: [];
+    $image_orintation = get_post_meta(get_the_ID(), '_service_pricing_img_orintation', true) ?: [];
+    $lists           = get_post_meta(get_the_ID(), '_service_pricing_lists', true) ?: [];
 
-    // Get Meta Data from Database
-
-
-    $headings        = get_post_meta(get_the_ID(), '_aboutus_mission_headings', true) ?: [];
-    $paragraphs      = get_post_meta(get_the_ID(), '_aboutus_mission_paragraphs', true) ?: [];
-    $images          = get_post_meta(get_the_ID(), '_aboutus_mission_images', true) ?: [];
-    $buttons         = get_post_meta(get_the_ID(), '_aboutus_mission_buttons', true) ?: [];
-    $button_links    = get_post_meta(get_the_ID(), '_aboutus_mission_button_links', true) ?: [];
-    $image_orintation = get_post_meta(get_the_ID(), '_aboutus_mission_img_orintation', true) ?: [];
-    $lists           = get_post_meta(get_the_ID(), '_aboutus_mission_lists', true) ?: [];
 
     for ($i = 0; $i < 1; $i++) {
     ?>
@@ -41,9 +37,16 @@
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>
+                <?php if (!empty($buttons[$i]) && !empty($button_links[$i])): ?>
+                    <a class="content_btn" href="<?php echo esc_url($button_links[$i]); ?>" class="button">
+                        <span content_btn--text>
 
+                            <?php echo esc_html($buttons[$i]); ?>
+                        </span>
+                        <span class="content_btn--icon"></span>
+                    </a>
+                <?php endif; ?>
             </div>
-            <!-- <?php echo esc_attr($image_container_color[$i] ?? 'blue'); ?> -->
             <div class="aboutus_service_image">
                 <?php if (!empty($images[$i])): ?>
                     <img src="<?php echo esc_url($images[$i]); ?>" alt="Service Image">

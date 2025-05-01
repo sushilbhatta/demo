@@ -20,8 +20,8 @@
     <!-- desktop nav -->
     <header class="main-header main-nav--style">
         <a href="#" class="main-header__brand">
-            <?php $logoimg = get_header_image();  ?>
-            <img src="<?php echo $logoimg ?>" alt="this is logo">
+            <?php $header_img = get_dynamic_header_image(); ?>
+            <img src="<?php echo esc_url($header_img); ?>" alt="Site Header">
         </a>
         <?php
         wp_nav_menu([
@@ -36,8 +36,8 @@
     <!-- mobile nav -->
     <header class="mobile-nav">
         <a href="#" class="mobile-nav__logo">
-            <?php $logoimg = get_header_image();  ?>
-            <img src="<?php echo $logoimg ?>" alt="this is logo">
+            <?php $header_img = get_dynamic_header_image(); ?>
+            <img src="<?php echo esc_url($header_img); ?>" alt="Site Header">
         </a>
 
         <button class="toggle-btn--white"></button>
