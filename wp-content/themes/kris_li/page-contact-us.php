@@ -1,6 +1,7 @@
 <?php
 get_header('about');
 
+
 $main_bg_img = get_post_meta(get_the_ID(), '_contactus_bg_image', true) ?: '';
 $contact_form_bg_img = get_post_meta(get_the_ID(), '_contact_form_images', true) ?: '';
 $contact_form_captcha_logo = get_post_meta(get_the_ID(), '_contact_form_recaptcha_images', true) ?: '';

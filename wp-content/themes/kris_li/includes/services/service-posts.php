@@ -89,50 +89,85 @@
             document.addEventListener('DOMContentLoaded', function() {
                 const tabs = document.querySelectorAll('.tab-titles li');
                 const contents = document.querySelectorAll('.tab-content');
-                // get active tab only
-                function activateTab(target) {
+                const tabList = document.querySelector('.tab-titles');
+
+                if ('scrollRestoration' in history) {
+                    history.scrollRestoration = 'manual'; //scroll manually to location
+                }
+
+                function activateTab(target, updateHash = true, scroll = true) {
                     contents.forEach(content => {
-                        content.style.display = 'none';
+                        content.style.display = 'none'; //hide the content of tabs
                     });
 
                     const targetContent = document.getElementById(target);
                     if (targetContent) {
-                        targetContent.style.display = 'flex';
+                        targetContent.style.display = 'flex'; //show the content of clicked tab only
                     }
 
-                    tabs.forEach(t => t.classList.remove('active'));
+                    tabs.forEach(t => t.classList.remove('active')); //remove while switching
+
                     const targetTab = document.querySelector(`.tab-title_item[data-tab="${target}"]`);
+
                     if (targetTab) {
                         targetTab.classList.add('active');
+                        targetTab.setAttribute('aria-selected', 'true');
+                    }
+
+                    tabs.forEach(t => {
+                        if (t !== targetTab) {
+                            t.setAttribute('aria-selected', 'false');
+                        }
+                    });
+
+                    if (scroll && tabList) {
+                        const header = document.querySelector('header');
+                        const defaultOffset = 20;
+                        const headerHeight = header ? header.offsetHeight : 0;
+                        const offset = headerHeight > 0 ? headerHeight + defaultOffset : 250;
+
+                        const tabListRect = tabList.getBoundingClientRect();
+                        const scrollTop = window.pageYOffset + tabListRect.top - offset;
+                        window.scrollTo({
+                            top: scrollTop,
+                            behavior: 'smooth'
+                        });
+                    }
+
+
+                    if (updateHash) {
+                        history.pushState(null, null, `#${target}`);
                     }
                 }
 
-                // Handle tab Toggling/changing
+
                 tabs.forEach(tab => {
-                    tab.addEventListener('click', function() {
+                    tab.addEventListener('click', function(e) {
+                        e.preventDefault();
                         const target = this.getAttribute('data-tab');
-                        activateTab(target);
-                        window.location.hash = target;
+                        activateTab(target, true, true);
                     });
                 });
 
-                // Check for hash in URL on page load
-                const hash = window.location.hash.replace('#', '');
-                if (hash && document.getElementById(hash)) {
-                    activateTab(hash);
-                } else if (tabs.length > 0) {
-                    tabs[0].click();
-                }
 
-                // Handle hash changes (e.g., browser back/forward)
+                window.addEventListener('load', function() {
+                    const hash = window.location.hash.replace('#', ''); //remove # form hashstring
+                    if (hash && document.getElementById(hash)) {
+
+                        activateTab(hash, false, true);
+                    } else if (tabs.length > 0) {
+
+                        activateTab('tab-0', false, false);
+                    }
+                });
+
                 window.addEventListener('hashchange', function() {
                     const newHash = window.location.hash.replace('#', '');
                     if (newHash && document.getElementById(newHash)) {
-                        activateTab(newHash);
+                        activateTab(newHash, false, true);
                     }
                 });
             });
-        </script>
         </script>
 
     <?php

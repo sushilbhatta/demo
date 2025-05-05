@@ -54,7 +54,7 @@ wp_localize_script('my-theme-js', 'myTheme', [
 ]);
 
 
-
+// AjAX
 add_action('wp_enqueue_scripts', 'contact_form_enqueue_scripts');
 function contact_form_enqueue_scripts()
 {
@@ -252,14 +252,19 @@ function get_blocks_by_name_with_class($block_name, $class_name, $blocks = null)
 // hero section metaboxes
 function hero_section_meta_box()
 {
-	add_meta_box(
-		'hero_section_meta',
-		'Hero Section',
-		'hero_section_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'home') {
+
+		add_meta_box(
+			'hero_section_meta',
+			'Hero Section',
+			'hero_section_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'hero_section_meta_box');
 
@@ -353,14 +358,19 @@ add_action('save_post', 'save_hero_section_meta_box');
 //  Carousel heading metaboxes
 function brand_carousel_section_meta_box()
 {
-	add_meta_box(
-		'brand_carousel_section_meta',
-		'Brand_carousel Section',
-		'brand_carousel_section_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'home') {
+
+		add_meta_box(
+			'brand_carousel_section_meta',
+			'Brand_carousel Section',
+			'brand_carousel_section_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'brand_carousel_section_meta_box');
 
@@ -402,14 +412,19 @@ add_action('save_post', 'save_brand_carousel_section_meta_box');
 //Carousel content meta_box
 function carousel_meta_box()
 {
-	add_meta_box(
-		'carousel_meta',
-		'Carousel Section',
-		'carousel_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'home') {
+
+		add_meta_box(
+			'carousel_meta',
+			'Carousel Section',
+			'carousel_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'carousel_meta_box');
 
@@ -477,14 +492,19 @@ add_action('save_post', 'save_carousel_meta_box');
 // feature section metaboxes
 function feature_section_meta_box()
 {
-	add_meta_box(
-		'feature_section_meta',
-		'Feature Section',
-		'feature_section_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'home') {
+
+		add_meta_box(
+			'feature_section_meta',
+			'Feature Section',
+			'feature_section_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'feature_section_meta_box');
 
@@ -606,14 +626,19 @@ add_action('save_post', 'save_feature_section_meta_box');
 // Offer Section  Heading Meta box
 function offer_section_meta_box()
 {
-	add_meta_box(
-		'offer_section_meta',
-		'Offer Section',
-		'offer_section_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'home') {
+
+		add_meta_box(
+			'offer_section_meta',
+			'Offer Section Heading',
+			'offer_section_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'offer_section_meta_box');
 
@@ -654,15 +679,21 @@ add_action('save_post', 'save_offer_section_meta_box');
 
 // Offer Content  meta_box
 function offer_meta_box()
+
 {
-	add_meta_box(
-		'offer_meta',
-		'Offer Section',
-		'offer_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'home') {
+
+		add_meta_box(
+			'offer_meta',
+			'Offer Section Content',
+			'offer_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'offer_meta_box');
 
@@ -757,14 +788,19 @@ add_action('save_post', 'save_offer_meta_box');
 
 function contact_section_meta_box()
 {
-	add_meta_box(
-		'contact_section_meta',
-		'Contact Section',
-		'contact_section_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'home') {
+
+		add_meta_box(
+			'contact_section_meta',
+			'Contact Section',
+			'contact_section_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'contact_section_meta_box');
 
@@ -866,14 +902,19 @@ add_action('save_post', 'save_contact_section_meta_box');
 // Testimonial Header metabox
 function testimonial_section_meta_box()
 {
-	add_meta_box(
-		'Testimonial_section_meta',
-		'Testimonial Section',
-		'testimonial_section_meta_box_callback',
-		['post', 'page'],
-		'advanced',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'home') {
+
+		add_meta_box(
+			'Testimonial_section_meta',
+			'Testimonial Section',
+			'testimonial_section_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'testimonial_section_meta_box');
 
@@ -916,14 +957,19 @@ add_action('save_post', 'save_testimonial_section_meta_box');
 // Testimonial Content meta_box
 function testimonial_card_meta_box()
 {
-	add_meta_box(
-		'testimonial_card_meta',
-		'Testimonial Card Section',
-		'testimonial_card_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'home') {
+
+		add_meta_box(
+			'testimonial_card_meta',
+			'Testimonial Card Section',
+			'testimonial_card_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'testimonial_card_meta_box');
 
@@ -984,14 +1030,19 @@ add_action('save_post', 'save_testimonial_card_meta_box');
 // Get In Touch Section Metabox
 function get_in_touch_section_meta_box()
 {
-	add_meta_box(
-		'get_in_touch_section_meta',
-		'Get_in_touch Section',
-		'get_in_touch_section_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'home') {
+
+		add_meta_box(
+			'get_in_touch_section_meta',
+			'Get_in_touch Section',
+			'get_in_touch_section_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'get_in_touch_section_meta_box');
 
@@ -1082,14 +1133,19 @@ add_action('save_post', 'save_get_in_touch_section_meta_box');
 // Aboutus hero_section metaboxes
 function about_krisli_meta_box()
 {
-	add_meta_box(
-		'about_krisli_meta',
-		'About Us hero Section',
-		'about_krisli_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'about') {
+
+		add_meta_box(
+			'about_krisli_meta',
+			'About Us Hero Section',
+			'about_krisli_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'about_krisli_meta_box');
 
@@ -1187,14 +1243,19 @@ add_action('save_post', 'save_about_krisli_meta_box');
 // aboutus  feature heading metabox
 function about_feature_meta_box()
 {
-	add_meta_box(
-		'about_feature_meta',              // ID
-		'About Feature MetaData Section',
-		'about_feature_meta_box_callback',
-		['post', 'page'],                    // Screen(s)
-		'side',                            // Context
-		'high'                               // Priority
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'about') {
+
+		add_meta_box(
+			'about_feature_meta',              // ID
+			'About Feature Meta Data Section',
+			'about_feature_meta_box_callback',
+			['post', 'page'],                    // Screen(s)
+			'advanced',                            // Context
+			'high'                               // Priority
+		);
+	}
 }
 add_action('add_meta_boxes', 'about_feature_meta_box');
 
@@ -1274,14 +1335,19 @@ add_action('save_post', 'save_about_feature_meta_box');
 // Aboutus Feature Content  meta_box
 function about_feature_item_meta_box()
 {
-	add_meta_box(
-		'about_feature_item_meta',
-		'aboutus Feature Item Content Section',
-		'about_feature_item_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'about') {
+
+		add_meta_box(
+			'about_feature_item_meta',
+			'aboutus Feature Item Content Section',
+			'about_feature_item_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'about_feature_item_meta_box');
 
@@ -1328,14 +1394,19 @@ add_action('save_post', 'save_about_feature_item_meta_box');
 // Aboutus Services Section Metabox
 function aboutus_service_meta_box()
 {
-	add_meta_box(
-		'aboutus_service_meta',
-		'About us Service Section',
-		'aboutus_service_meta_box_callback',
-		['post', 'page'],
-		'advanced',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'about') {
+
+		add_meta_box(
+			'aboutus_service_meta',
+			'About us Service Section',
+			'aboutus_service_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'aboutus_service_meta_box');
 
@@ -1439,14 +1510,19 @@ add_action('save_post', 'save_aboutus_service_meta_box');
 // Aboutus Need Section metabox
 function aboutus_mission_meta_box()
 {
-	add_meta_box(
-		'aboutus_mission_meta',
-		'About Us need Section',
-		'aboutus_mission_meta_box_callback',
-		'page',
-		'advanced',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'about') {
+
+		add_meta_box(
+			'aboutus_mission_meta',
+			'About Us need Section',
+			'aboutus_mission_meta_box_callback',
+			'page',
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'aboutus_mission_meta_box');
 
@@ -1609,14 +1685,19 @@ add_action('save_post', 'save_aboutus_mission_meta_box');
 //our team section metabox
 function team_header_meta_box()
 {
-	add_meta_box(
-		'team_header_meta',
-		'Team Section',
-		'team_header_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'about') {
+
+		add_meta_box(
+			'team_header_meta',
+			'Team Section Heading',
+			'team_header_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'team_header_meta_box');
 
@@ -1655,18 +1736,23 @@ function save_team_header_meta_box($post_id)
 add_action('save_post', 'save_team_header_meta_box');
 
 
-// Team  Content  meta_box
+// Team  Content meta_box
 
 function team_meta_box()
 {
-	add_meta_box(
-		'team_meta',
-		'Team Section',
-		'team_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'about') {
+
+		add_meta_box(
+			'team_meta',
+			'Team Section',
+			'team_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'team_meta_box');
 
@@ -1812,14 +1898,18 @@ function get_tab_svgs()
 // service hero section metaboxes
 function service_krisli_meta_box()
 {
-	add_meta_box(
-		'service_krisli_meta',
-		'Service Hero Section',
-		'service_krisli_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'our-services') {
+		add_meta_box(
+			'service_krisli_meta',
+			'Service Hero Section',
+			'service_krisli_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'service_krisli_meta_box');
 
@@ -1929,14 +2019,19 @@ add_action('save_post', 'save_service_krisli_meta_box');
 // service why_choose_us section metabox
 function why_choose_us_meta_box()
 {
-	add_meta_box(
-		'why_choose_us_meta',
-		'Why_choose_us Section',
-		'why_choose_us_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'our-services') {
+
+		add_meta_box(
+			'why_choose_us_meta',
+			'Why_choose_us Section',
+			'why_choose_us_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'why_choose_us_meta_box');
 
@@ -1996,14 +2091,19 @@ add_action('save_post', 'save_why_choose_us_meta_box');
 // service pricing Info section metabox
 function aboutus_vision_meta_box()
 {
-	add_meta_box(
-		'aboutus_vision_meta',
-		'About Us Vision Section',
-		'aboutus_vision_meta_box_callback',
-		'page',
-		'advanced',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'our-services') {
+
+		add_meta_box(
+			'aboutus_vision_meta',
+			'About Us Vision Section',
+			'aboutus_vision_meta_box_callback',
+			'page',
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'aboutus_vision_meta_box');
 function aboutus_vision_meta_box_callback($post)
@@ -2291,14 +2391,19 @@ add_action('save_post', 'save_service_tab_posts_section_meta_box');
 
 function contactus_meta_box()
 {
-	add_meta_box(
-		'contactus_meta',
-		'Contact Page Background Image',
-		'contactus_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'contact-us') {
+
+		add_meta_box(
+			'contactus_meta',
+			'Contact Page Background Image',
+			'contactus_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'contactus_meta_box');
 
@@ -2360,14 +2465,19 @@ add_action('save_post', 'save_contactus_meta_box');
 // Contactus Form section  metaboxes
 function contact_page_form_meta_box()
 {
-	add_meta_box(
-		'contact_page_form_meta',
-		'Contact Form form',
-		'contact_page_form_meta_box_callback',
-		['post', 'page'],
-		'side',
-		'high'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'contact-us') {
+
+		add_meta_box(
+			'contact_page_form_meta',
+			'Contact Form form',
+			'contact_page_form_meta_box_callback',
+			['post', 'page'],
+			'advanced',
+			'high'
+		);
+	}
 }
 add_action('add_meta_boxes', 'contact_page_form_meta_box');
 
@@ -2448,17 +2558,22 @@ function save_contact_page_form_meta_box($post_id)
 add_action('save_post', 'save_contact_page_form_meta_box');
 
 
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%% HOME PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%% FAQ PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function custom_faq_metabox()
 {
-	add_meta_box(
-		'custom_faq_metabox',
-		'FAQs',
-		'render_custom_faq_metabox',
-		'page',
-		'advanced',
-		'default'
-	);
+	global $post;
+	$post_slug = $post->post_name;
+	if ($post_slug === 'faq') {
+
+		add_meta_box(
+			'custom_faq_metabox',
+			'FAQs',
+			'render_custom_faq_metabox',
+			'page',
+			'advanced',
+			'default'
+		);
+	}
 }
 add_action('add_meta_boxes', 'custom_faq_metabox');
 

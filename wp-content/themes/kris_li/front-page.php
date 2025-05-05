@@ -1,7 +1,5 @@
 <?php get_header(); ?>
-<?php
-?>
-<main class="container">
+<main class="">
     <?php get_template_part('/includes/hero'); ?>
     <?php get_template_part('/includes/carousel'); ?>
     <?php get_template_part('/includes/feature'); ?>

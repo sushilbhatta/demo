@@ -1,11 +1,12 @@
 /* About us Style */
 .aboutus-main {
-  padding: 60px 20px;
+  padding: calc(60px + 92px) 20px;
+  padding-bottom: 60px !important;
 }
 
 @media (min-width: 768px) {
   .aboutus-main {
-    padding: 120px 72px;
+    padding: calc(120px + 92px) 72px;
     max-width: calc(1440px);
     margin: 0 auto;
   }
@@ -258,6 +259,7 @@
 .aboutus-services {
   padding: 60px 20px;
 }
+
 .aboutus_service_image {
   width: 100%;
   height: auto;
@@ -288,6 +290,7 @@
 .aboutus-need {
   padding: 60px 20px;
 }
+
 .aboutus_service_image {
   width: 100%;
   height: 450px;
@@ -305,11 +308,13 @@
   align-items: start;
   justify-content: center;
 }
+
 .need_list li {
   display: flex;
   justify-content: center;
   align-items: start;
 }
+
 .need_list li > strong {
   font-size: var(--fs-body);
   font-weight: 400;
@@ -385,7 +390,7 @@
 @media (min-width: 1024px) {
   .team {
     padding: 72px 120px;
-    max-width: calc(1440px - 144px);
+    max-width: calc(1440px);
     margin: 0 auto;
   }
 
